@@ -45,6 +45,35 @@ MACOS
 Официальная инструкция Apple по этому предупреждению:
 https://support.apple.com/ru-ru/102445
 
+ЗАПАСНОЙ ВАРИАНТ: РУЧНАЯ УСТАНОВКА НА MACOS
+
+Этот способ не требует запуска Install-DanJa.command.
+
+1. Сохраните проект, закройте After Effects и распакуйте macOS-архив.
+2. В Finder нажмите Command + Shift + G и вставьте путь:
+   ~/Library/Application Support/Adobe
+3. Если папок CEP и extensions нет, создайте их:
+   Adobe > CEP > extensions.
+   Полный путь должен получиться таким:
+   ~/Library/Application Support/Adobe/CEP/extensions
+4. Скопируйте туда распакованную папку DanJa целиком.
+   Переименуйте скопированную папку в com.danja.panel.
+   В ней должны непосредственно лежать index.html, CSXS, assets,
+   css, js, lib и host, без дополнительной вложенной папки DanJa.
+   Если com.danja.panel уже существует, сначала перенесите старую
+   папку в другое место как резервную копию. Не объединяйте папки.
+   Файлы пользовательской библиотеки DanJa удалять не нужно.
+5. Откройте приложение Terminal, вставьте следующую команду
+   и нажмите Enter:
+   defaults write com.adobe.CSXS.12 PlayerDebugMode -string 1
+   Команда разрешает Adobe CEP загружать неподписанные панели.
+   Она не отключает защиту Gatekeeper в macOS.
+6. Запустите After Effects 2026 и откройте:
+   Window > Extensions > DanJa.
+7. Для сохранения пресетов включите:
+   Preferences > Scripting & Expressions >
+   Allow Scripts to Write Files and Access Network.
+
 Плагин и установщик пока не подписаны. Проверка работы в After Effects
 на macOS ещё не завершена.
 
